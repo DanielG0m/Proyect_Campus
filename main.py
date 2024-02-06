@@ -1,3 +1,3 @@
-import modulos.campus as camper
+import modulos.campus as campus
 
-camper.menu()
+campus.menu()

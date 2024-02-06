@@ -1,37 +1,30 @@
 import os
-from variables import save,getAll
-from tabulate import tabulate
-def create():
-    os.system('cls')
-    print("""
-        #################################
-        #     Formulario del Camper     #
-        #################################
-          """)
-    save({
-        "Nombre": input("Ingrese el nombre del camper: "),
-        "Apellido": input("Ingrese el apellido del camper: "),
-        "Edad": int(input("Ingrese la edad del camper: "))   
-    })
-    os.system('pause')
-
-def read():
-    print(f"""
-        #################################
-        #     Formulario del Camper     #
-        #################################
-        {tabulate(getAll())}
-        """)
-    os.system('cls')
-
-def update():
-    print("Camper actualizado ")
-
-def delete():
-    print("Camper eliminado")
+from .variables import Camper,Datos
 
 def menu():
-    menu= ["Guardar","Buscar","Actualizar","Eliminar","Salir"]
+    menu= ["Campers","Trainers","Administracion","Salir"]
+    while True:
+        os.system('cls')
+        print("""
+        #################################
+        #        Menu del Campus        #
+        #################################
+          """)
+        print(".".join([f"{i+1}. {val} " for i,val in enumerate(menu)]))
+        try:
+            opc=int(input())
+            if opc<=len(menu) and opc>0:
+                match opc:
+                    case 1: Camper()
+                    case 2: Trainers()
+                    case 3: Administracion()
+                    case 4: break
+        except ValueError:
+            print("La opcion no es valida")
+            os.system('cls')
+
+def Camper():
+    menu= ["Guardar","Buscar","Volver", "Salir"]
     while True:
         os.system('cls')
         print("""
@@ -44,11 +37,65 @@ def menu():
             opc=int(input())
             if opc<=len(menu) and opc>0:
                 match opc:
+                    case 1: createEstudiante()
+                    case 2: read()
+                    case 3: menu()
+                    case 4: break
+        except ValueError:
+            print("La opcion no es valida")
+            os.system('cls')
+
+def Trainers():
+    menu= ["Guardar","Buscar","Volver", "Salir"]
+    while True:
+        os.system('cls')
+        print("""
+        ##################################
+        #        Menu de Trainers        #
+        ##################################
+          """)
+        print(".".join([f"{i+1}. {val} " for i,val in enumerate(menu)]))
+        try:
+            opc=int(input())
+            if opc<=len(menu) and opc>0:
+                match opc:
                     case 1: create()
                     case 2: read()
-                    case 3: update()
-                    case 4: delete()
+                    case 3: menu()
+                    case 4: break
+        except ValueError:
+            print("La opcion no es valida")
+            os.system('cls')
+
+def Administracion():
+    menu= ["Actualizar","Borrar","Asignar", "Salir"]
+    while True:
+        os.system('cls')
+        print("""
+        #####################################
+        #        Menu Administrativo        #
+        #####################################
+          """)
+        print(".".join([f"{i+1}. {val} " for i,val in enumerate(menu)]))
+        try:
+            opc=int(input())
+            if opc<=len(menu) and opc>0:
+                match opc:
+                    case 1: update()
+                    case 2: delete()
+                    case 3: asignar()
+                    case 4: menu()
                     case 5: break
         except ValueError:
             print("La opcion no es valida")
             os.system('cls')
+
+
+def createEstudiante():
+    os.system('cls')
+    print("""
+        #################################
+        #     Formulario del Camper     #
+        #################################
+          """)
+    os.system('pause')
