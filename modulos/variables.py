@@ -1,10 +1,4 @@
-camper = list()
-
-def save(data):
-    camper.append(data)
-
-def getAll():
-    return camper
+from abc import ABC, 
 
 class Camper:
     def Datos(self, id, nombre, apellidos, direccion, telefono_celular, telefono_fijo,estado):

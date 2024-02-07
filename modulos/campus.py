@@ -1,8 +1,20 @@
 import os
-from .variables import Camper,Datos
+from variables import *
+
+Camper= Camper()
+RutaEntrenamiento= RutaEntrenamiento()
+Prueba=Prueba()
+AreaEntrenamiento=AreaEntrenamiento()
+RutaEntrenamiento=RutaEntrenamiento()
+Entrenador=Entrenador()
+Matricula=Matricula()
+Evaluacion=Evaluacion()
+
+Camper.Datos()
+
 
 def menu():
-    menu= ["Campers","Trainers","Administracion","Salir"]
+    menu= ["Campers ","Trainers ","Administracion ","Salir "]
     while True:
         os.system('cls')
         print("""
@@ -98,4 +110,5 @@ def createEstudiante():
         #     Formulario del Camper     #
         #################################
           """)
+    
     os.system('pause')
