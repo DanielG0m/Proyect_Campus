@@ -47,7 +47,7 @@ def Camper():
             if opc<=len(menu) and opc>0:
                 match opc:
                     case 1: createEstudiante()
-                    case 2: read()
+                    case 2: SearchStudent()
                     case 3: menu()
                     case 4: break
         except ValueError:
@@ -108,7 +108,7 @@ def createEstudiante():
         #################################
           """)
 
-    id = generador_id()
+    id = int(input("Ingresa tu ID: "))
     nombre = input("Ingrese el nombre del estudiante: ")
     apellidos = input("Ingrese los apellidos del estudiante: ")
     direccion = input("Ingrese la dirección del estudiante: ")
@@ -119,5 +119,24 @@ def createEstudiante():
 
     campers_totales.append(nuevo_camper)
     print("Datos agregados con exito")
-
     os.system('pause')
+
+
+# ALLAN, Hay que hacer un for que me ayude a leer los elementos de una lista dentro de otra lista
+# y asi encuentre el id en cada uno, pensaba en usar LAMBDA
+
+
+
+def SearchStudent():
+    os.system('cls')
+    print("""
+        #################################
+        #         Buscar Camper         #
+        #################################
+          """)
+    buscar=input("Ingrese la ID del camper a buscar: ")
+    for i in campers_totales:
+        if buscar in campers_totales:
+            print("Se encuentra registrado")
+        elif buscar  not in campers_totales:
+            print("No se encuentra registrado")

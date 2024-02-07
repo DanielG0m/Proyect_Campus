@@ -58,18 +58,6 @@ class Camper(Persona):
         self.telefono_fijo = telefono_fijo
         self.estado = estado
 
-    def agregar_datos(self, id, nombre, apellidos, direccion, telefono_celular, telefono_fijo, estado):
-        self.agregar_datos(id, nombre, apellidos, direccion, telefono_celular, telefono_fijo, estado)
-
-def generador_id():
-    global contador_id
-    if campers_totales:
-        ultimo_id = int(campers_totales[-1]['id'])
-        contador_id = ultimo_id + 1
-    else:
-        contador_id = 1
-    return str(contador_id)
-
 class RutaEntrenamiento(Entrenamiento):
     def datos_entrenamiento(self, nombre, stack_tecnologico, capacidad_maxima):
         self.nombre = nombre
