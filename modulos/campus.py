@@ -1,17 +1,14 @@
 import os
-from variables import *
+from .variables import *
 
 Camper= Camper()
 RutaEntrenamiento= RutaEntrenamiento()
 Prueba=Prueba()
 AreaEntrenamiento=AreaEntrenamiento()
-RutaEntrenamiento=RutaEntrenamiento()
+RutaEntrenamiento=RutaEntrenamientoCreada()
 Entrenador=Entrenador()
 Matricula=Matricula()
 Evaluacion=Evaluacion()
-
-Camper.Datos()
-
 
 def menu():
     menu= ["Campers ","Trainers ","Administracion ","Salir "]
@@ -110,5 +107,17 @@ def createEstudiante():
         #     Formulario del Camper     #
         #################################
           """)
-    
+
+    id = generador_id()
+    nombre = input("Ingrese el nombre del estudiante: ")
+    apellidos = input("Ingrese los apellidos del estudiante: ")
+    direccion = input("Ingrese la dirección del estudiante: ")
+    telefono_celular = input("Ingrese el teléfono celular del estudiante: ")
+    telefono_fijo = input("Ingrese el teléfono fijo del estudiante: ")
+    estado = input("Ingrese el estado del estudiante: ")
+    nuevo_camper=(id, nombre, apellidos, direccion, telefono_celular, telefono_fijo, estado)
+
+    campers_totales.append(nuevo_camper)
+    print("Datos agregados con exito")
+
     os.system('pause')

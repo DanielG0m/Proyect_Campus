@@ -1,6 +1,54 @@
-from abc import ABC, 
+from abc import ABC, abstractmethod
 
-class Camper:
+class Persona(ABC):
+    @abstractmethod
+    def Datos(self, id, nombre, apellidos, direccion, telefono_celular, telefono_fijo,estado):
+        pass
+
+class Entrenamiento(ABC):
+    @abstractmethod
+    def datos_entrenamiento(self, nombre, stack_tecnologico, capacidad_maxima):
+        pass
+
+class Prueba(ABC):
+    @abstractmethod
+    def datos_prueba(self, camper, nota_teorica, nota_practica):
+        pass
+
+    @abstractmethod
+    def es_aprobada(self):
+        pass
+
+class Espacio(ABC):
+    @abstractmethod
+    def lugar(self, nombre, capacidad_maxima):
+        pass
+
+class RutaEntrenamientoCreada(ABC):
+    @abstractmethod
+    def ruta(self, ruta_entrenamiento, sgdb_principal, sgdb_alternativo):
+        pass
+
+class Instructor(ABC):
+    @abstractmethod
+    def trainer(self, nombre, rutas_entrenamiento):
+        pass
+
+class Matricula(ABC):
+    @abstractmethod
+    def ingreso(self, camper, ruta_entrenamiento, entrenador, fecha_inicio, fecha_finalizacion, salon_entrenamiento):
+        pass
+
+class Evaluacion(ABC):
+    @abstractmethod
+    def examen(self, camper, modulo, nota_teoria, nota_practica, quices_trabajos):
+        pass
+
+    @abstractmethod
+    def es_aprobada(self):
+        pass
+
+class Camper(Persona):
     def Datos(self, id, nombre, apellidos, direccion, telefono_celular, telefono_fijo,estado):
         self.id = id
         self.nombre = nombre
@@ -10,13 +58,25 @@ class Camper:
         self.telefono_fijo = telefono_fijo
         self.estado = estado
 
-class RutaEntrenamiento:
+    def agregar_datos(self, id, nombre, apellidos, direccion, telefono_celular, telefono_fijo, estado):
+        self.agregar_datos(id, nombre, apellidos, direccion, telefono_celular, telefono_fijo, estado)
+
+def generador_id():
+    global contador_id
+    if campers_totales:
+        ultimo_id = int(campers_totales[-1]['id'])
+        contador_id = ultimo_id + 1
+    else:
+        contador_id = 1
+    return str(contador_id)
+
+class RutaEntrenamiento(Entrenamiento):
     def datos_entrenamiento(self, nombre, stack_tecnologico, capacidad_maxima):
         self.nombre = nombre
         self.stack_tecnologico= stack_tecnologico
         self.capacidad_maxima= capacidad_maxima
 
-class Prueba:
+class Prueba(Prueba):
     def datos_prueba(self, camper, nota_teorica, nota_practica):
         self.camper = camper
         self.nota_teorica=nota_teorica
@@ -26,23 +86,23 @@ class Prueba:
         promedio=(self.nota_teorica + self.nota_practica)/2
         return promedio >= 60
 
-class AreaEntrenamiento:
+class AreaEntrenamiento(Espacio):
     def lugar(self,nombre,capacidad_maxima):
         self.nombre = nombre
         self.capacidad_maxima=capacidad_maxima
 
-class RutaEntrenamientoCreada:
+class RutaEntrenamientoCreada(RutaEntrenamientoCreada):
     def ruta(self, ruta_entrenamiento, sgdb_principal, sgdb_alternativo):
         self.ruta_entrenamiento = ruta_entrenamiento
         self.sgdb_principal = sgdb_principal
         self.sgdb_alternativo = sgdb_alternativo
 
-class Entrenador:
+class Entrenador(Instructor):
     def trainer(self, nombre, rutas_entrenamiento):
         self.nombre = nombre
         self.rutas_entrenamiento = rutas_entrenamiento
 
-class Matricula:
+class Matricula(Matricula):
     def ingreso(self, camper, ruta_entrenamiento, entrenador, fecha_inicio, fecha_finalizacion, salon_entrenamiento):
         self.camper = camper
         self.ruta_entrenamiento = ruta_entrenamiento
@@ -51,7 +111,7 @@ class Matricula:
         self.fecha_finalizacion = fecha_finalizacion
         self.salon_entrenamiento = salon_entrenamiento
 
-class Evaluacion:
+class Evaluacion(Evaluacion):
     def examen(self, camper, modulo, nota_teoria, nota_practica, quices_trabajos):
         self.camper = camper
         self.modulo = modulo
@@ -63,7 +123,7 @@ class Evaluacion:
         nota_final = (self.nota_teoria * 0.3) + (self.nota_practica * 0.6) + (self.quices_trabajos * 0.1)
         return nota_final >= 60
 
-campers = []
+campers_totales = []
 rutas_entrenamiento = []
 pruebas = []
 areas_entrenamiento = []
