@@ -3,15 +3,15 @@ from .variables import *
 
 Camper= Camper()
 RutaEntrenamiento= RutaEntrenamiento()
-Prueba=Prueba()
-AreaEntrenamiento=AreaEntrenamiento()
-RutaEntrenamiento=RutaEntrenamientoCreada()
-Entrenador=Entrenador()
-Matricula=Matricula()
-Evaluacion=Evaluacion()
+Prueba= Prueba()
+AreaEntrenamiento= AreaEntrenamiento()
+RutaEntrenamiento= RutaEntrenamientoCreada()
+Entrenador= Entrenador()
+Matricula= Matricula()
+Evaluacion= Evaluacion()
 
 def menu():
-    menu= ["Campers ","Trainers ","Administracion ","Salir "]
+    menu= ["Campers ","Trainers ","Administracion "," Reportes ", "Salir "]
     while True:
         os.system('cls')
         print("""
@@ -27,7 +27,8 @@ def menu():
                     case 1: Camper()
                     case 2: Trainers()
                     case 3: Administracion()
-                    case 4: break
+                    case 4: Reportes()
+                    case 5: break
         except ValueError:
             print("La opcion no es valida")
             os.system('cls')
@@ -126,7 +127,7 @@ def createEstudiante():
 # y asi encuentre el id en cada uno, pensaba en usar LAMBDA
 
 
-
+print(campers_totales)
 def SearchStudent():
     os.system('cls')
     print("""
@@ -135,8 +136,11 @@ def SearchStudent():
         #################################
           """)
     buscar=input("Ingrese la ID del camper a buscar: ")
-    for i in campers_totales:
-        if buscar in campers_totales:
-            print("Se encuentra registrado")
-        elif buscar  not in campers_totales:
-            print("No se encuentra registrado")
+
+
+
+def Reportes():
+    print(campers_totales)
+    print(Trainers)
+    print(Matricula)
+    os.system('pause')

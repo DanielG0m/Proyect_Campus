@@ -112,13 +112,12 @@ class Evaluacion(Evaluacion):
         return nota_final >= 60
 
 campers_totales = []
-rutas_entrenamiento = []
-pruebas = []
-areas_entrenamiento = []
-rutas_entrenamiento_creadas = []
+inscritos = []
+aprobados = []
 entrenadores = []
-matriculas = []
-evaluaciones = []
+bajo_rendimiento = []
+filtrados = []
+no_filtrados = []
 
 # Clases abstractas
 # Firmas
