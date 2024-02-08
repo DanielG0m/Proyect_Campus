@@ -48,7 +48,7 @@ def Camper():
             if opc<=len(menu) and opc>0:
                 match opc:
                     case 1: createEstudiante()
-                    case 2: SearchStudent()
+                    case 2: searchStudent()
                     case 3: menu()
                     case 4: break
         except ValueError:
@@ -69,8 +69,8 @@ def Trainers():
             opc=int(input())
             if opc<=len(menu) and opc>0:
                 match opc:
-                    case 1: create()
-                    case 2: read()
+                    case 1: createTrainer()
+                    case 2: searchTrainer()
                     case 3: menu()
                     case 4: break
         except ValueError:
@@ -109,7 +109,7 @@ def createEstudiante():
         #################################
           """)
 
-    id = int(input("Ingresa tu ID: "))
+    id = int(input("Ingrese ID del camper: "))
     nombre = input("Ingrese el nombre del estudiante: ")
     apellidos = input("Ingrese los apellidos del estudiante: ")
     direccion = input("Ingrese la dirección del estudiante: ")
@@ -128,7 +128,7 @@ def createEstudiante():
 
 
 print(campers_totales)
-def SearchStudent():
+def searchStudent():
     os.system('cls')
     print("""
         #################################
@@ -137,9 +137,29 @@ def SearchStudent():
           """)
     buscar=input("Ingrese la ID del camper a buscar: ")
 
+def createTrainer():
+    os.system('cls')
+    print("""
+        #################################
+        #     Formulario Instructor     #
+        #################################
+          """)
+    
+    idTrainer = input("Ingrese ID del Trainer: ")
+    nombreTrainer = input("Ingrese nombre del Trainer: ")
+    trainer_totales=(idTrainer,nombreTrainer)
+
+    Trainers.append(trainer_totales)
 
 
 def Reportes():
+    os.system('cls')
+    print("""
+        #################################
+               #     REPORTES     #
+        #################################
+          """)
+    
     print(campers_totales)
     print(Trainers)
     print(Matricula)

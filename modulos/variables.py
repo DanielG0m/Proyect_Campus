@@ -86,9 +86,9 @@ class RutaEntrenamientoCreada(RutaEntrenamientoCreada):
         self.sgdb_alternativo = sgdb_alternativo
 
 class Entrenador(Instructor):
-    def trainer(self, nombre, rutas_entrenamiento):
-        self.nombre = nombre
-        self.rutas_entrenamiento = rutas_entrenamiento
+    def trainer(self, idTrainer, nombreTrainer):
+        self.idTrainer = idTrainer
+        self.nombreTrainer = nombreTrainer
 
 class Matricula(Matricula):
     def ingreso(self, camper, ruta_entrenamiento, entrenador, fecha_inicio, fecha_finalizacion, salon_entrenamiento):
