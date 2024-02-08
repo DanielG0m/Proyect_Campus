@@ -123,7 +123,7 @@ def createEstudiante():
     os.system('pause')
 
 
-# ALLAN, Hay que hacer un for que me ayude a leer los elementos de una lista dentro de otra lista
+# Hay que hacer un for que me ayude a leer los elementos de una lista dentro de otra lista
 # y asi encuentre el id en cada uno, pensaba en usar LAMBDA
 
 
@@ -136,6 +136,12 @@ def searchStudent():
         #################################
           """)
     buscar=input("Ingrese la ID del camper a buscar: ")
+    for student in campers_totales:
+        if buscar in student:
+            print(f"Camper encontrado: {student}")
+            break
+    else:
+        print("Camper no encontrado.")
 
 def createTrainer():
     os.system('cls')
@@ -150,6 +156,23 @@ def createTrainer():
     trainer_totales=(idTrainer,nombreTrainer)
 
     Trainers.append(trainer_totales)
+
+
+def searchTrainer():
+    os.system('cls')
+    print("""
+        #################################
+        #         Buscar Camper         #
+        #################################
+          """)
+    buscarTrainer=input("Ingrese la ID del Trainer a buscar: ")
+    for student in Trainers:
+        if buscarTrainer in student:
+            print(f"Trainer encontrado: {student}")
+            break
+    else:
+        print("Trainer no encontrado.")
+
 
 
 def Reportes():
