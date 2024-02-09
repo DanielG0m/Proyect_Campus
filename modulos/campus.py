@@ -78,7 +78,7 @@ def Trainers():
             os.system('cls')
 
 def Administracion():
-    menu= ["Actualizar","Borrar","Asignar", "Salir"]
+    menu= ["Actualizar","Asignar", "Salir"]
     while True:
         os.system('cls')
         print("""
@@ -86,16 +86,15 @@ def Administracion():
         #        Menu Administrativo        #
         #####################################
           """)
-        print(".".join([f"{i+1}. {val} " for i,val in enumerate(menu)]))
+        print(" ".join([f"{i+1}. {val} " for i,val in enumerate(menu)]))
         try:
             opc=int(input())
             if opc<=len(menu) and opc>0:
                 match opc:
-                    case 1: update()
-                    case 2: delete()
-                    case 3: asignar()
-                    case 4: menu()
-                    case 5: break
+                    case 1: updateData()
+                    case 2: assignmentData()
+                    case 3: menu()
+                    case 4: break
         except ValueError:
             print("La opcion no es valida")
             os.system('cls')
@@ -173,6 +172,96 @@ def searchTrainer():
     else:
         print("Trainer no encontrado.")
 
+
+def updateData():
+    menu= ["Campers","Trainers","Salir"]
+    while True:
+        os.system('cls')
+        print("""
+        #####################################
+        #        Menu Administrativo        #
+        #####################################
+          """)
+        print(" ".join([f"{i+1}. {val} " for i,val in enumerate(menu)]))
+        try:
+            opc=int(input())
+            if opc<=len(menu) and opc>0:
+                match opc:
+                    case 1: updateDataCampers()
+                    case 2: updateDataTrainers()
+                    case 3: menu()
+                    case 4: break
+        except ValueError:
+            print("La opcion no es valida")
+            os.system('cls')
+
+
+def updateDataCampers():
+    menu= ["Actualizar datos del Camper","Eliminar datos del Camper","Salir"]
+    while True:
+        os.system('cls')
+        print("""
+        #####################################
+        #        Menu Administrativo        #
+        #####################################
+          """)
+        print(" ".join([f"{i+1}. {val} " for i,val in enumerate(menu)]))
+        try:
+            opc=int(input())
+            if opc<=len(menu) and opc>0:
+                match opc:
+                    case 1: addDataCamper()
+                    case 2: deleteDataCamper()
+                    case 3: menu()
+                    case 4: break
+        except ValueError:
+            print("La opcion no es valida")
+            os.system('cls')
+
+
+def updateDataTrainers():
+    menu= ["Actualizar datos del Trainer","Eliminar datos del Trainer","Salir"]
+    while True:
+        os.system('cls')
+        print("""
+        #####################################
+        #        Menu Administrativo        #
+        #####################################
+          """)
+        print(" ".join([f"{i+1}. {val} " for i,val in enumerate(menu)]))
+        try:
+            opc=int(input())
+            if opc<=len(menu) and opc>0:
+                match opc:
+                    case 1: addDataTrainer()
+                    case 2: deleteDataTrainer()
+                    case 3: menu()
+                    case 4: break
+        except ValueError:
+            print("La opcion no es valida")
+            os.system('cls')
+
+
+def assignmentData():
+    menu= ["Seleccion el Trainer para empezar","Salir"]
+    while True:
+        os.system('cls')
+        print("""
+        #####################################
+        #        Menu Administrativo        #
+        #####################################
+          """)
+        print(" ".join([f"{i+1}. {val} " for i,val in enumerate(menu)]))
+        try:
+            opc=int(input())
+            if opc<=len(menu) and opc>0:
+                match opc:
+                    case 1: ()
+                    case 2: menu()
+                    case 3: break
+        except ValueError:
+            print("La opcion no es valida")
+            os.system('cls')
 
 
 def Reportes():
