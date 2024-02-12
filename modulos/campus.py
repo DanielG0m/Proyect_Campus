@@ -10,6 +10,7 @@ RutaEntrenamiento= RutaEntrenamientoCreada()
 Entrenador= Entrenador()
 Matricula= Matricula()
 Evaluacion= Evaluacion()
+studentAprobado="Aprovado"
 
 def menu():
     menu= ["Campers ","Trainers ","Administracion "," Reportes ", "Salir "]
@@ -77,7 +78,7 @@ def Trainers():
             os.system('cls')
 
 def Administracion():
-    menu= ["Actualizar","Asignar", "Salir"]
+    menu= ["Actualizar","Registrar Notas", "Salir"]
     while True:
         os.system('cls')
         print("""
@@ -91,7 +92,7 @@ def Administracion():
             if opc<=len(menu) and opc>0:
                 match opc:
                     case 1: updateData()
-                    case 2: pass
+                    case 2: assigmentNotes()
                     case 3: break
         except ValueError:
             print("La opcion no es valida")
@@ -104,33 +105,16 @@ def createEstudiante():
         #     Formulario del Camper     #
         #################################
           """)
-
+    
     id = int(input("Ingrese ID del camper: "))
     nombre = input("Ingrese el nombre del estudiante: ")
     apellidos = input("Ingrese los apellidos del estudiante: ")
     direccion = input("Ingrese la dirección del estudiante: ")
     acudiente= input("Ingrese un acudiente: ")
-    estado= ' '
-    # while True:
-    #     opc= input("Tiene algun de numero contacto? (s/n) ").upper()
-    #     i=1
-    #     if opc == "S":
-    #         numeroDeContactoCamper= int(input("Ingrese el numero de contacto del camper: "))
-    #         masNumeros=int(input("Desesa agregar mas numeros? (s/n) ")).upper()
-    #         if masNumeros == "S":
-    #             cantidadDeNumeros=int(input("Ingresa la cantida de numeros de contactos: "))
-    #             for i in range(cantidadDeNumeros):
-    #                 i+=1
-    #                 numeroscampers= int(input(f"Numero de contacto {i}: "))
-    #                 telefonosCampers=(numeroDeContactoCamper,numeroscampers)
-    #         elif masNumeros == "N":
-    #             break
-    #     elif opc == "N":
-    #         break
+    estado= 'Inscrito'
     nuevo_camper=(id, nombre, apellidos, direccion, acudiente, estado)
 
     campers_totales.append(nuevo_camper)
-    
     print("Datos agregados con exito")
     os.system('pause')
 
@@ -284,7 +268,6 @@ def nombreApellidoCamper():
         print("Cambios realizados con exito. ")
     os.system('pause')
 
-
 def direccionAcudienteCamper():
     buscar=input("Ingrese la ID del camper a buscar: ")
     for i, student in enumerate(campers_totales):
@@ -300,7 +283,6 @@ def direccionAcudienteCamper():
         print("Cambios realizados con exito. ")
     os.system('pause')
 
-
 def deleteDataCamper():
     buscar=input("Ingrese la ID del camper a buscar: ")
     for i, student in enumerate(campers_totales):
@@ -311,7 +293,6 @@ def deleteDataCamper():
         del campers_totales[i]
         print("Camper eliminado...")
     os.system('pause')
-
 
 def addDataTrainer():
     buscar=input("Ingrese la ID del camper a buscar: ")
@@ -339,30 +320,33 @@ def deleteDataTrainer():
         print("Camper eliminado...")
     os.system('pause')
 
-#def asignarNotas():
-
-
-#pendiete asignaciones
-# def assignmentData():
-#     menu= ["Seleccion el Trainer para empezar","Salir"]
-#     while True:
-#         os.system('cls')
-#         print("""
-#         #####################################
-#         #        Menu Administrativo        #
-#         #####################################
-#           """)
-#         print(" ".join([f"{i+1}. {val} " for i,val in enumerate(menu)]))
-#         try:
-#             opc=int(input())
-#             if opc<=len(menu) and opc>0:
-#                 match opc:
-#                     case 1: ()
-#                     case 2: menu()
-#                     case 3: break
-#         except ValueError:
-#             print("La opcion no es valida")
-#             os.system('cls')
+def assigmentNotes():
+    while True:
+        buscar_student=int(input("Ingrese la ID del camper a buscar: "))
+        for i, student in enumerate(campers_totales):
+            if buscar_student in student:
+                print(student)
+                nota_teorica= int(input("Ingrese la nota teorica del estudiante: "))
+                nota_practica= int(input("Ingrese la nota practica del estudiante: "))
+                promedio=(nota_teorica + nota_practica)/2
+                if promedio >= 60:
+                    for i, student in enumerate(campers_totales):
+                        if buscar_student in student:
+                            campers_totales[i] = list(campers_totales[i])  # Convertir la tupla a lista
+                            campers_totales[i][5] = studentAprobado
+                            print(campers_totales[i])
+                            print("El estado del camper ha sido pre-inscrito. ")
+                            os.system('pause')
+                            break
+                elif promedio<60:
+                            print("No paso la prueba")
+                            break
+            else:
+                print("Camper no Encontrado")
+                os.system('pause')
+                break
+        break
+                    
 
 
 def Reportes():
