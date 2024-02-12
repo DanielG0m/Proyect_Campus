@@ -19,7 +19,7 @@ def menu():
         #        Menu del Campus        #
         #################################
           """)
-        print(".".join([f"{i+1}. {val} " for i,val in enumerate(menu)]))
+        print(" ".join([f"{i+1}. {val} " for i,val in enumerate(menu)]))
         try:
             opc=int(input())
             if opc<=len(menu) and opc>0:
@@ -42,21 +42,20 @@ def Camper():
         #        Menu del camper        #
         #################################
           """)
-        print(".".join([f"{i+1}. {val} " for i,val in enumerate(menu)]))
+        print(" ".join([f"{i+1}. {val} " for i,val in enumerate(menu)]))
         try:
             opc=int(input())
             if opc<=len(menu) and opc>0:
                 match opc:
                     case 1: createEstudiante()
                     case 2: searchStudent()
-                    case 3: menu()
-                    case 4: break
+                    case 3: break
         except ValueError:
             print("La opcion no es valida")
             os.system('cls')
 
 def Trainers():
-    menu= ["Guardar","Buscar","Volver", "Salir"]
+    menu= ["Guardar","Buscar", "Salir"]
     while True:
         os.system('cls')
         print("""
@@ -64,15 +63,14 @@ def Trainers():
         #        Menu de Trainers        #
         ##################################
           """)
-        print(".".join([f"{i+1}. {val} " for i,val in enumerate(menu)]))
+        print(" ".join([f"{i+1}. {val} " for i,val in enumerate(menu)]))
         try:
             opc=int(input())
             if opc<=len(menu) and opc>0:
                 match opc:
                     case 1: createTrainer()
                     case 2: searchTrainer()
-                    case 3: menu()
-                    case 4: break
+                    case 3: break
         except ValueError:
             print("La opcion no es valida")
             os.system('cls')
@@ -92,13 +90,11 @@ def Administracion():
             if opc<=len(menu) and opc>0:
                 match opc:
                     case 1: updateData()
-                    case 2: assignmentData()
-                    case 3: menu()
-                    case 4: break
+                    case 2: pass
+                    case 3: break
         except ValueError:
             print("La opcion no es valida")
             os.system('cls')
-
 
 def createEstudiante():
     os.system('cls')
@@ -112,21 +108,34 @@ def createEstudiante():
     nombre = input("Ingrese el nombre del estudiante: ")
     apellidos = input("Ingrese los apellidos del estudiante: ")
     direccion = input("Ingrese la dirección del estudiante: ")
-    telefono_celular = input("Ingrese el teléfono celular del estudiante: ")
-    telefono_fijo = input("Ingrese el teléfono fijo del estudiante: ")
-    estado = input("Ingrese el estado del estudiante: ")
-    nuevo_camper=(id, nombre, apellidos, direccion, telefono_celular, telefono_fijo, estado)
+    acudiente= input("Ingrese un acudiente: ")
+    estado= ' '
+    # while True:
+    #     opc= input("Tiene algun de numero contacto? (s/n) ").upper()
+    #     i=1
+    #     if opc == "S":
+    #         numeroDeContactoCamper= int(input("Ingrese el numero de contacto del camper: "))
+    #         masNumeros=int(input("Desesa agregar mas numeros? (s/n) ")).upper()
+    #         if masNumeros == "S":
+    #             cantidadDeNumeros=int(input("Ingresa la cantida de numeros de contactos: "))
+    #             for i in range(cantidadDeNumeros):
+    #                 i+=1
+    #                 numeroscampers= int(input(f"Numero de contacto {i}: "))
+    #                 telefonosCampers=(numeroDeContactoCamper,numeroscampers)
+    #         elif masNumeros == "N":
+    #             break
+    #     elif opc == "N":
+    #         break
+    nuevo_camper=(id, nombre, apellidos, direccion, acudiente, estado)
 
     campers_totales.append(nuevo_camper)
+    
     print("Datos agregados con exito")
     os.system('pause')
-
 
 # Hay que hacer un for que me ayude a leer los elementos de una lista dentro de otra lista
 # y asi encuentre el id en cada uno, pensaba en usar LAMBDA
 
-
-print(campers_totales)
 def searchStudent():
     os.system('cls')
     print("""
@@ -134,13 +143,14 @@ def searchStudent():
         #         Buscar Camper         #
         #################################
           """)
-    buscar=input("Ingrese la ID del camper a buscar: ")
-    for student in campers_totales:
-        if buscar in student:
-            print(f"Camper encontrado: {student}")
+    buscar_student=input("Ingrese la ID del camper a buscar: ")
+    for student_camper in campers_totales:
+        if buscar_student in student_camper:
+            print("Camper no encontrado")
             break
     else:
-        print("Camper no encontrado.")
+        print(f"Camper encontrado: {student_camper}")
+    os.system('pause')
 
 def createTrainer():
     os.system('cls')
@@ -153,9 +163,10 @@ def createTrainer():
     idTrainer = input("Ingrese ID del Trainer: ")
     nombreTrainer = input("Ingrese nombre del Trainer: ")
     trainer_totales=(idTrainer,nombreTrainer)
-
-    Trainers.append(trainer_totales)
-
+    
+    trainers_ingresados.append(trainer_totales)
+    print("Datos agregados con exito")
+    os.system('pause')
 
 def searchTrainer():
     os.system('cls')
@@ -165,14 +176,14 @@ def searchTrainer():
         #################################
           """)
     buscarTrainer=input("Ingrese la ID del Trainer a buscar: ")
-    for student in Trainers:
+    for student in trainers_ingresados:
         if buscarTrainer in student:
-            print(f"Trainer encontrado: {student}")
+            print(f"Trainer no encontrado.")
             break
     else:
-        print("Trainer no encontrado.")
-
-
+        print(f"Trainer encontrado: {student}")
+    os.system('pause')
+    
 def updateData():
     menu= ["Campers","Trainers","Salir"]
     while True:
@@ -189,12 +200,10 @@ def updateData():
                 match opc:
                     case 1: updateDataCampers()
                     case 2: updateDataTrainers()
-                    case 3: menu()
-                    case 4: break
+                    case 3: break
         except ValueError:
             print("La opcion no es valida")
             os.system('cls')
-
 
 def updateDataCampers():
     menu= ["Actualizar datos del Camper","Eliminar datos del Camper","Salir"]
@@ -202,7 +211,7 @@ def updateDataCampers():
         os.system('cls')
         print("""
         #####################################
-        #        Menu Administrativo        #
+        #     Menu Administrativo (campers) #
         #####################################
           """)
         print(" ".join([f"{i+1}. {val} " for i,val in enumerate(menu)]))
@@ -211,13 +220,11 @@ def updateDataCampers():
             if opc<=len(menu) and opc>0:
                 match opc:
                     case 1: addDataCamper()
-                    case 2: deleteDataCamper()
-                    case 3: menu()
-                    case 4: break
+                    case 2: pass#deleteDataCamper() 
+                    case 3: break
         except ValueError:
             print("La opcion no es valida")
             os.system('cls')
-
 
 def updateDataTrainers():
     menu= ["Actualizar datos del Trainer","Eliminar datos del Trainer","Salir"]
@@ -225,7 +232,7 @@ def updateDataTrainers():
         os.system('cls')
         print("""
         #####################################
-        #        Menu Administrativo        #
+        #   Menu Administrativo (trainers)  #
         #####################################
           """)
         print(" ".join([f"{i+1}. {val} " for i,val in enumerate(menu)]))
@@ -235,20 +242,18 @@ def updateDataTrainers():
                 match opc:
                     case 1: addDataTrainer()
                     case 2: deleteDataTrainer()
-                    case 3: menu()
-                    case 4: break
+                    case 3: break
         except ValueError:
             print("La opcion no es valida")
             os.system('cls')
 
-
-def assignmentData():
-    menu= ["Seleccion el Trainer para empezar","Salir"]
+def addDataCamper():
+    menu= ["Cambiar Nombres y Apellidos","Cambiar Direccion y Acudiente", "Salir"]
     while True:
         os.system('cls')
         print("""
         #####################################
-        #        Menu Administrativo        #
+        #     Menu Administrativo (campers) #
         #####################################
           """)
         print(" ".join([f"{i+1}. {val} " for i,val in enumerate(menu)]))
@@ -256,12 +261,65 @@ def assignmentData():
             opc=int(input())
             if opc<=len(menu) and opc>0:
                 match opc:
-                    case 1: ()
-                    case 2: menu()
+                    case 1: nombreApellidoCamper()
+                    case 2: direccionAcudienteCamper()
                     case 3: break
         except ValueError:
             print("La opcion no es valida")
             os.system('cls')
+
+def nombreApellidoCamper():
+    buscar=input("Ingrese la ID del camper a buscar: ")
+    for student in campers_totales:
+        if buscar in student:
+            print("Camper no encontrado")
+            break
+    else:
+        nombre= input("Ingrese el nuevo nombre: ")
+        campers_totales[0] = nombre
+        apellido=input("Ingrese el nuevo apellido: ")
+        campers_totales[0] = apellido
+        print("Cambios realizados con exito. ")
+    os.system('pause')
+
+def direccionAcudienteCamper():
+    buscar=input("Ingrese la ID del camper a buscar: ")
+    for student in campers_totales:
+        if buscar in student:
+            print("Camper no encontrado")
+            break
+    else:
+        direccion= input("Ingrese el nueva direccion: ")
+        campers_totales[3] = direccion
+        acudiente=input("Ingrese el nuevo nombre del acudiente: ")
+        campers_totales[4] = acudiente
+        print("Cambios realizados con exito. ")
+    os.system('pause')
+
+#def asignarNotas():
+
+
+#pendiete asignaciones
+# def assignmentData():
+#     menu= ["Seleccion el Trainer para empezar","Salir"]
+#     while True:
+#         os.system('cls')
+#         print("""
+#         #####################################
+#         #        Menu Administrativo        #
+#         #####################################
+#           """)
+#         print(" ".join([f"{i+1}. {val} " for i,val in enumerate(menu)]))
+#         try:
+#             opc=int(input())
+#             if opc<=len(menu) and opc>0:
+#                 match opc:
+#                     case 1: ()
+#                     case 2: menu()
+#                     case 3: break
+#         except ValueError:
+#             print("La opcion no es valida")
+#             os.system('cls')
 
 
 def Reportes():
