@@ -1,5 +1,6 @@
 import os
 from .variables import *
+from tabulate import tabulate
 
 Camper= Camper()
 RutaEntrenamiento= RutaEntrenamiento()
@@ -160,10 +161,10 @@ def createTrainer():
         #################################
           """)
     
-    idTrainer = input("Ingrese ID del Trainer: ")
+    idTrainer = int(input("Ingrese ID del Trainer: "))
     nombreTrainer = input("Ingrese nombre del Trainer: ")
     trainer_totales=(idTrainer,nombreTrainer)
-    
+
     trainers_ingresados.append(trainer_totales)
     print("Datos agregados con exito")
     os.system('pause')
@@ -220,7 +221,7 @@ def updateDataCampers():
             if opc<=len(menu) and opc>0:
                 match opc:
                     case 1: addDataCamper()
-                    case 2: pass#deleteDataCamper() 
+                    case 2: deleteDataCamper() 
                     case 3: break
         except ValueError:
             print("La opcion no es valida")
@@ -270,30 +271,72 @@ def addDataCamper():
 
 def nombreApellidoCamper():
     buscar=input("Ingrese la ID del camper a buscar: ")
-    for student in campers_totales:
+    for i, student in enumerate(campers_totales):
         if buscar in student:
             print("Camper no encontrado")
             break
     else:
         nombre= input("Ingrese el nuevo nombre: ")
-        campers_totales[0] = nombre
+        campers_totales[i] = list(campers_totales[i])  # Convertir la tupla a lista
+        campers_totales[i][1] = nombre
         apellido=input("Ingrese el nuevo apellido: ")
-        campers_totales[0] = apellido
+        campers_totales[i][2] = apellido
         print("Cambios realizados con exito. ")
     os.system('pause')
 
+
 def direccionAcudienteCamper():
     buscar=input("Ingrese la ID del camper a buscar: ")
-    for student in campers_totales:
+    for i, student in enumerate(campers_totales):
         if buscar in student:
             print("Camper no encontrado")
             break
     else:
-        direccion= input("Ingrese el nueva direccion: ")
-        campers_totales[3] = direccion
-        acudiente=input("Ingrese el nuevo nombre del acudiente: ")
-        campers_totales[4] = acudiente
+        direccion= input("Ingrese la nueva direccion: ")
+        campers_totales[i] = list(campers_totales[i])  # Convertir la tupla a lista
+        campers_totales[i][3] = direccion
+        acudiente=input("Ingrese el nuevo acudiente: ")
+        campers_totales[i][4] = acudiente
         print("Cambios realizados con exito. ")
+    os.system('pause')
+
+
+def deleteDataCamper():
+    buscar=input("Ingrese la ID del camper a buscar: ")
+    for i, student in enumerate(campers_totales):
+        if buscar in student:
+            print("Camper no encontrado")
+            break
+    else:
+        del campers_totales[i]
+        print("Camper eliminado...")
+    os.system('pause')
+
+
+def addDataTrainer():
+    buscar=input("Ingrese la ID del camper a buscar: ")
+    for i, trainer in enumerate(trainers_ingresados):
+        if buscar in trainer:
+            print("Camper no encontrado")
+            break
+    else:
+        nombre= input("Ingrese el nuevo nombre: ")
+        trainers_ingresados[i] = list(trainers_ingresados[i])  # Convertir la tupla a lista
+        trainers_ingresados[i][1] = nombre
+        apellido=input("Ingrese el nuevo apellido: ")
+        trainers_ingresados[i][2] = apellido
+        print("Cambios realizados con exito. ")
+    os.system('pause')
+
+def deleteDataTrainer():
+    buscar=input("Ingrese la ID del camper a buscar: ")
+    for i, trainer in enumerate(trainers_ingresados):
+        if buscar in trainer:
+            print("Camper no encontrado")
+            break
+    else:
+        del trainers_ingresados[i]
+        print("Camper eliminado...")
     os.system('pause')
 
 #def asignarNotas():
@@ -331,6 +374,5 @@ def Reportes():
           """)
     
     print(campers_totales)
-    print(Trainers)
-    print(Matricula)
+    print(trainers_ingresados)
     os.system('pause')

@@ -118,7 +118,7 @@ entrenadores = []
 bajo_rendimiento = []
 filtrados = []
 no_filtrados = []
-trainers_ingresados= []
+trainers_ingresados = []
 
 # Clases abstractas
 # Firmas
