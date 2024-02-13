@@ -78,7 +78,7 @@ def Trainers():
             os.system('cls')
 
 def Administracion():
-    menu= ["Actualizar","Registrar Notas", "Salir"]
+    menu= ["Actualizar","Prueba inicial","Notas Modulos","Salir"]
     while True:
         os.system('cls')
         print("""
@@ -93,7 +93,8 @@ def Administracion():
                 match opc:
                     case 1: updateData()
                     case 2: assigmentNotes()
-                    case 3: break
+                    case 3: modulesNotes()
+                    case 4: break
         except ValueError:
             print("La opcion no es valida")
             os.system('cls')
@@ -334,6 +335,7 @@ def assigmentNotes():
                         if buscar_student in student:
                             campers_totales[i] = list(campers_totales[i])  # Convertir la tupla a lista
                             campers_totales[i][5] = studentAprobado
+                            estudiantes_aprobados.append(campers_totales[i])
                             print(campers_totales[i])
                             print("El estado del camper ha sido pre-inscrito. ")
                             os.system('pause')
@@ -346,7 +348,9 @@ def assigmentNotes():
                 os.system('pause')
                 break
         break
-                    
+
+def modulesNotes():
+    
 
 
 def Reportes():

@@ -112,8 +112,8 @@ class Evaluacion(Evaluacion):
         return nota_final >= 60
 
 campers_totales = []
-inscritos = []
-aprobados = []
+inscritos_inscritos = []
+estudiantes_aprobados = []
 entrenadores = []
 bajo_rendimiento = []
 filtrados = []
