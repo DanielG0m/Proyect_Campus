@@ -1,20 +1,31 @@
 [
     {
-        "id_trainer" : "123456543",
-        "nombre_trainer" : "Brandon",
-        "apellidos_trainer" : "Sagastegui",
-        "especialidad_trainer": ["Ruta NodeJS"]
+        "id_trainer": "123456543",
+        "nombre_trainer": "Brandon",
+        "apellidos_trainer": "Sagastegui",
+        "especialidad_trainer": [
+            "Ruta NodeJS"
+        ]
     },
     {
-        "id_trainer" : "123467890",
-        "nombre_trainer" : "Pedro",
-        "apellidos_trainer" : "Juarez",
-        "especialidad_trainer": ["Ruta NetCore"]
+        "id_trainer": "123467890",
+        "nombre_trainer": "Pedro",
+        "apellidos_trainer": "Juarez",
+        "especialidad_trainer": [
+            "Ruta NetCore"
+        ]
     },
     {
-        "id_trainer" : "168956543",
-        "nombre_trainer" : "David",
-        "apellidos_trainer" : "Aguilar",
-        "especialidad_trainer": ["Ruta Java"]
+        "id_trainer": "168956543",
+        "nombre_trainer": "David",
+        "apellidos_trainer": "Aguilar",
+        "especialidad_trainer": [
+            "Ruta Java"
+        ]
+    },
+    {
+        "ID": "3",
+        "Nombre": "g",
+        "Especialidad": "g"
     }
 ]

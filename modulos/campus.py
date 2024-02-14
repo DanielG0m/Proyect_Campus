@@ -218,13 +218,13 @@ def createEstudiante():
     }
 
     try:
-        with open('modulos/json/campers.json', "r") as archivo:
+        with open('modulos/datos/datos_camper.json', "r") as archivo:
             datos_existentes = json.load(archivo)
     except FileNotFoundError:
         datos_existentes = []
     datos_existentes.append(data_camper)
 
-    with open('modulos/json/campers.json', "w") as archivo:
+    with open('modulos/datos/datos_camper.json', "w") as archivo:
         json.dump(datos_existentes, archivo, indent=4)
 
     print("Datos agregados con exito")
@@ -274,13 +274,13 @@ def editCamper():
         }
 
     try:
-        with open('modulos/json/campers.json', "r") as archivo:
+        with open('modulos/datos/datos_camper.json' , "r") as archivo:
             datos_existentes = json.load(archivo)
     except FileNotFoundError:
         datos_existentes = []
     datos_existentes.append(data_camper)
 
-    with open('modulos/json/campers.json', "w") as archivo:
+    with open('modulos/datos/datos_camper.json', "w") as archivo:
         json.dump(datos_existentes, archivo, indent=4)
         os.system('pause')
 
@@ -295,7 +295,7 @@ def createTrainer():
     nombre_trainer = input("Ingrese nombre del Trainer: ")
     especialidad = input("Ingrese especialidad del trainer: ")
     trainer_totales = (id_trainer, nombre_trainer, especialidad)
-    Trainers.append(trainer_totales)
+    trainers_ingresados.append(trainer_totales)
 
     data_trainer={
         "ID": id_trainer,
@@ -304,13 +304,13 @@ def createTrainer():
     }
 
     try:
-        with open('modulos/json/campers.json', "r") as archivo:
+        with open('modulos/datos/datos_trainer.json', "r") as archivo:
             datos_existentes = json.load(archivo)
     except FileNotFoundError:
         datos_existentes = []
     datos_existentes.append(data_trainer)
 
-    with open('modulos/json/campers.json', "w") as archivo:
+    with open('modulos/datos/datos_trainer.json', "w") as archivo:
         json.dump(datos_existentes, archivo, indent=4)
 
 def searchTrainer():
