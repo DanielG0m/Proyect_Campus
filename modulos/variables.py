@@ -162,16 +162,32 @@ def loadSalas():
         data = []
     return data
 
+def addClases(data):
+    with open('modulos/JSON/Clases.json', 'w') as file:
+        json.dump(data, file, indent=4)
+
+def loadClases():
+    try:
+        with open('modulos/JSON/Clases.json', 'r') as file: 
+            data = json.load(file) 
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        data = []
+    return data
+
+def addNotas(data):
+    with open('modulos/JSON/Notas.json', 'w') as file:
+        json.dump(data, file, indent=4)
+
+def loadNotas():
+    try:
+        with open('modulos/JSON/Notas.json', 'r') as file: 
+            data = json.load(file) 
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        data = []
+    return data
 
 
-campers_totales = []
-inscritos_inscritos = []
-estudiantes_aprobados = []
-entrenadores = []
-bajo_rendimiento = []
-filtrados = []
-no_filtrados = []
-trainers_ingresados = []
+
 
 # Clases abstractas
 # Firmas
