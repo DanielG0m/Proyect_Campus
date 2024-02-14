@@ -111,6 +111,14 @@ class Evaluacion(Evaluacion):
         nota_final = (self.nota_teoria * 0.3) + (self.nota_practica * 0.6) + (self.quices_trabajos * 0.1)
         return nota_final >= 60
 
+campers_totales = []
+inscritos_inscritos = []
+estudiantes_aprobados = []
+entrenadores = []
+bajo_rendimiento = []
+filtrados = []
+no_filtrados = []
+trainers_ingresados = []
 
 # Clases abstractas
 # Firmas
