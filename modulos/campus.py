@@ -1,6 +1,7 @@
 import os
 from .variables import *
 from tabulate import tabulate
+import json
 
 Camper= Camper()
 RutaEntrenamiento= RutaEntrenamiento()
@@ -10,7 +11,22 @@ RutaEntrenamiento= RutaEntrenamientoCreada()
 Entrenador= Entrenador()
 Matricula= Matricula()
 Evaluacion= Evaluacion()
-studentAprobado="Aprovado"
+
+exist_trainer=readDataTrainerJson()
+data_trainer=readDataTrainerJson()
+
+add_camper=readDataCamperJson()
+data_camper=readDataCamperJson()
+
+data=readDataCamperJson()
+
+addruta=addRutas()
+loadruta=loadRutas()
+
+addsalas=addSalas()
+loadsalas=loadSalas()
+
+studentAprobado="Aprobado"
 
 def menu():
     menu= ["Campers ","Trainers ","Administracion "," Reportes ", "Salir "]
@@ -36,7 +52,7 @@ def menu():
             os.system('cls')
 
 def Camper():
-    menu= ["Guardar","Buscar","Volver", "Salir"]
+    menu= ["Guardar","Buscar","Volver"]
     while True:
         os.system('cls')
         print("""
@@ -78,7 +94,7 @@ def Trainers():
             os.system('cls')
 
 def Administracion():
-    menu= ["Actualizar","Prueba inicial","Notas Modulos","Salir"]
+    menu= ["Actualizar","Registrar rutas","Buscar Rutas", "Salir"]
     while True:
         os.system('cls')
         print("""
@@ -92,9 +108,10 @@ def Administracion():
             if opc<=len(menu) and opc>0:
                 match opc:
                     case 1: updateData()
-                    case 2: assigmentNotes()
-                    case 3: modulesNotes()
-                    case 4: break
+                    case 2: registrar_ruta()
+                    case 3: search_ruta()
+                    case 4: assigment_ruta()
+                    case 5: break
         except ValueError:
             print("La opcion no es valida")
             os.system('cls')
@@ -107,20 +124,20 @@ def createEstudiante():
         #################################
           """)
     
-    id = int(input("Ingrese ID del camper: "))
-    nombre = input("Ingrese el nombre del estudiante: ")
-    apellidos = input("Ingrese los apellidos del estudiante: ")
-    direccion = input("Ingrese la dirección del estudiante: ")
-    acudiente= input("Ingrese un acudiente: ")
-    estado= 'Inscrito'
-    nuevo_camper=(id, nombre, apellidos, direccion, acudiente, estado)
-
-    campers_totales.append(nuevo_camper)
-    print("Datos agregados con exito")
+    data_Camper={
+        "ID": int(input("Ingrese su ID: ")),
+        "Nombre": input("Ingrese sus nombres: "),
+        "Apellidos":input("Ingrese sus apellidos: "),
+        "Direccion":input("Ingrese una direccion: "),
+        "Telefeno": input("Ingrese un numero de contacto: "),
+        "Estado": "",
+        "Primer examen": "",
+        "Segundo examen":"",
+    }
+    add_camper.append(data_Camper)
+    addDataCamperJson(add_camper)
+    print("Datos guardados Correctamente")
     os.system('pause')
-
-# Hay que hacer un for que me ayude a leer los elementos de una lista dentro de otra lista
-# y asi encuentre el id en cada uno, pensaba en usar LAMBDA
 
 def searchStudent():
     os.system('cls')
@@ -129,8 +146,8 @@ def searchStudent():
         #         Buscar Camper         #
         #################################
           """)
-    buscar_student=input("Ingrese la ID del camper a buscar: ")
-    for student_camper in campers_totales:
+    buscar_student = input("Ingrese la ID del camper a buscar: ")
+    for student_camper in data:
         if buscar_student in student_camper:
             print("Camper no encontrado")
             break
@@ -146,12 +163,14 @@ def createTrainer():
         #################################
           """)
     
-    idTrainer = int(input("Ingrese ID del Trainer: "))
-    nombreTrainer = input("Ingrese nombre del Trainer: ")
-    trainer_totales=(idTrainer,nombreTrainer)
+    data_Trainer={
+        "ID": int(input("Ingrese su ID: ")),
+        "Nombre": input("Ingrese su nombre completo: "),
+        "Apellidos":input("Ingrese su apellido completo: "),
+    }
 
-    trainers_ingresados.append(trainer_totales)
-    print("Datos agregados con exito")
+    exist_trainer.append(data_Trainer)
+    addDataTrainerJson(exist_trainer)
     os.system('pause')
 
 def searchTrainer():
@@ -162,7 +181,7 @@ def searchTrainer():
         #################################
           """)
     buscarTrainer=input("Ingrese la ID del Trainer a buscar: ")
-    for student in trainers_ingresados:
+    for student in data_trainer:
         if buscarTrainer in student:
             print(f"Trainer no encontrado.")
             break
@@ -196,9 +215,9 @@ def updateDataCampers():
     while True:
         os.system('cls')
         print("""
-        #####################################
-        #     Menu Administrativo (campers) #
-        #####################################
+        ####################################
+        #   Menu Administrativo (campers)  #
+        ####################################
           """)
         print(" ".join([f"{i+1}. {val} " for i,val in enumerate(menu)]))
         try:
@@ -234,132 +253,160 @@ def updateDataTrainers():
             os.system('cls')
 
 def addDataCamper():
-    menu= ["Cambiar Nombres y Apellidos","Cambiar Direccion y Acudiente", "Salir"]
-    while True:
-        os.system('cls')
-        print("""
-        #####################################
-        #     Menu Administrativo (campers) #
-        #####################################
-          """)
-        print(" ".join([f"{i+1}. {val} " for i,val in enumerate(menu)]))
-        try:
-            opc=int(input())
-            if opc<=len(menu) and opc>0:
-                match opc:
-                    case 1: nombreApellidoCamper()
-                    case 2: direccionAcudienteCamper()
-                    case 3: break
-        except ValueError:
-            print("La opcion no es valida")
-            os.system('cls')
-
-def nombreApellidoCamper():
-    buscar=input("Ingrese la ID del camper a buscar: ")
-    for i, student in enumerate(campers_totales):
-        if buscar in student:
+    os.system('cls')
+    print("""
+    #####################################
+    #           Editar Camper           #
+    #####################################
+        """)
+    buscar_camper=int(input("Ingrese ID del Camper: "))
+    for i, student in enumerate(data_camper):
+        if buscar_camper in student:
             print("Camper no encontrado")
             break
     else:
-        nombre= input("Ingrese el nuevo nombre: ")
-        campers_totales[i] = list(campers_totales[i])  # Convertir la tupla a lista
-        campers_totales[i][1] = nombre
-        apellido=input("Ingrese el nuevo apellido: ")
-        campers_totales[i][2] = apellido
-        print("Cambios realizados con exito. ")
-    os.system('pause')
-
-def direccionAcudienteCamper():
-    buscar=input("Ingrese la ID del camper a buscar: ")
-    for i, student in enumerate(campers_totales):
-        if buscar in student:
-            print("Camper no encontrado")
-            break
-    else:
-        direccion= input("Ingrese la nueva direccion: ")
-        campers_totales[i] = list(campers_totales[i])  # Convertir la tupla a lista
-        campers_totales[i][3] = direccion
-        acudiente=input("Ingrese el nuevo acudiente: ")
-        campers_totales[i][4] = acudiente
-        print("Cambios realizados con exito. ")
+        edit = {
+        "ID": int(input("Ingrese su ID: ")),
+        "Nombre": input("Ingrese sus nombres: "),
+        "Apellidos":input("Ingrese sus apellidos: "),
+        "Direccion":input("Ingrese una direccion: "),
+        "Telefeno": input("Ingrese un numero de contacto: "),
+    }
+        
+    addDataCamperJson(edit)
+    print("Datos del camper actualizados.")
     os.system('pause')
 
 def deleteDataCamper():
-    buscar=input("Ingrese la ID del camper a buscar: ")
-    for i, student in enumerate(campers_totales):
-        if buscar in student:
+    buscar_camper=input("Ingrese ID del Camper: ")
+    for student in enumerate(data_camper):
+        if buscar_camper in student:
             print("Camper no encontrado")
             break
     else:
-        del campers_totales[i]
-        print("Camper eliminado...")
-    os.system('pause')
+        print("""
+        Esta seguro que desea eliminar el camper?
+        1. si
+        2. no
+        """)
+        opc = int(input(": "))
+        if opc == 1:
+            data_camper.pop(buscar_camper)
+            print("El camper fue eliminado correctamente")
+            os.system("pause")
+            os.system("cls")
+        elif opc == 2:
+            print("Eliminación cancelada.")
+            os.system("pause")
+            os.system("cls")
+        else:
+            print("Opción no válida. Por favor, ingrese 1 o 2.")    
 
 def addDataTrainer():
-    buscar=input("Ingrese la ID del camper a buscar: ")
-    for i, trainer in enumerate(trainers_ingresados):
-        if buscar in trainer:
+    os.system('cls')
+    print("""
+    #####################################
+    #           Editar Trainer          #
+    #####################################
+        """)
+    buscar_trainer=int(input("Ingrese ID del Trainer: "))
+    for student in enumerate(data_trainer):
+        if buscar_trainer in student:
             print("Camper no encontrado")
             break
     else:
-        nombre= input("Ingrese el nuevo nombre: ")
-        trainers_ingresados[i] = list(trainers_ingresados[i])  # Convertir la tupla a lista
-        trainers_ingresados[i][1] = nombre
-        apellido=input("Ingrese el nuevo apellido: ")
-        trainers_ingresados[i][2] = apellido
-        print("Cambios realizados con exito. ")
+        edit = {
+        "ID": int(input("Ingrese su ID: ")),
+        "Nombre": input("Ingrese su nombre completo: "),
+        "Apellidos":input("Ingrese su apellido completo: "),
+    }
+        
+    addDataTrainerJson(edit)
+    print("Datos del trainer actualizados.")
     os.system('pause')
+    
+# def deleteDataTrainer():
+def registrar_ruta():
+    os.system("cls")
+    print("""
+                *************************
+                *      Crear Rutas      *
+                *************************
+        """)
+    rutas = {
+        "Nombre": str(input("Ingrese nombre de ruta: ")),
+        "Modulos": {
+            "Fundamentos de programacion": ["Introduccion a la algoritmia","PSeInt","Python"],
+            "Programacion Web": ["HTML", "CSS", "Bootstrap"],
+            "Programacion formal": ["Java", "JavaScript", "C#"],
+            "Bases de datos": {
+                "Base de datos principal": input("Ingrese base de datos principal: "),
+                "Base de datos Secundario": input("Ingrese base de datos secundaria: ")
+            },
+            "Backend": ["NetCore", "Spring Boot", "NodeJS","Express"]
+        }
+    }
+    loadRutas.append(rutas)
+    addRutas(loadRutas)
+    os.system("pause")
+    os.system("cls")
 
-def deleteDataTrainer():
-    buscar=input("Ingrese la ID del camper a buscar: ")
-    for i, trainer in enumerate(trainers_ingresados):
-        if buscar in trainer:
-            print("Camper no encontrado")
-            break
-    else:
-        del trainers_ingresados[i]
-        print("Camper eliminado...")
-    os.system('pause')
-
-def assigmentNotes():
-    while True:
-        buscar_student=int(input("Ingrese la ID del camper a buscar: "))
-        for i, student in enumerate(campers_totales):
-            if buscar_student in student:
-                print(student)
-                nota_teorica= int(input("Ingrese la nota teorica del estudiante: "))
-                nota_practica= int(input("Ingrese la nota practica del estudiante: "))
-                promedio=(nota_teorica + nota_practica)/2
-                if promedio >= 60:
-                    for i, student in enumerate(campers_totales):
-                        if buscar_student in student:
-                            campers_totales[i] = list(campers_totales[i])  # Convertir la tupla a lista
-                            campers_totales[i][5] = studentAprobado
-                            estudiantes_aprobados.append(campers_totales[i])
-                            print(campers_totales[i])
-                            print("El estado del camper ha sido pre-inscrito. ")
-                            os.system('pause')
-                            break
-                elif promedio<60:
-                            print("No paso la prueba")
-                            break
-            else:
-                print("Camper no Encontrado")
-                os.system('pause')
-                break
-        break
-
-
-
-
-def Reportes():
+def search_ruta():
     os.system('cls')
     print("""
         #################################
-               #     REPORTES     #
+        #      Busqueda de Rutas        #
         #################################
           """)
-    
-    print(campers_totales)
-    print(trainers_ingresados)
+    buscarRuta=input("Ingrese la ID del Trainer a buscar: ")
+    for student in loadruta:
+        if buscarRuta in student:
+            print(f"Ruta no encontrado.")
+            break
+    else:
+        print(f"Ruta encontrado: {student}")
     os.system('pause')
+
+def create_salas():
+    os.system("cls")
+    print("""
+                *************************
+                *    Creacion Sala      *
+                *************************
+    """)
+    salas = {
+        "Nombre": input("Ingrese Nombre de la sala: "),
+        "Capacidad Mañana 1": 33,
+        "Capacidad Mañana 2": 33,
+        "Capacidad Tarde 1": 33,
+        "Capacidad Tarde 2": 33,
+        "Mañana jornada 1": 1,
+        "Mañana jornada 2": 1,
+        "Tarde jornada 1": 1,
+        "Tarde jornada 2": 1
+    }
+
+    loadsalas.append(salas)
+    addSalas(loadsalas)
+    print("Sala Ingresada con exito")
+    os.system("pause")
+    os.system("cls")
+
+def assigment_ruta():
+    
+
+
+
+
+
+# def Reportes():
+#     os.system('cls')
+#     print("""
+#         #################################
+#                #     REPORTES     #
+#         #################################
+#           """)
+    
+#     print(campers_totales)
+#     print(trainers_ingresados)
+#     os.system('pause')
