@@ -107,73 +107,15 @@ def Administracion():
             os.system('cls')
 
 def createEstudiante():
-    os.system('cls')
-    print("""
-        #################################
-        #     Formulario del Camper     #
-        #################################
-          """)
     
-    id = int(input("Ingrese ID del camper: "))
-    nombre = input("Ingrese el nombre del estudiante: ")
-    apellidos = input("Ingrese los apellidos del estudiante: ")
-    direccion = input("Ingrese la dirección del estudiante: ")
-    acudiente= input("Ingrese un acudiente: ")
-    ruta=input("Ingrese la ruta a escoger: ")
-    
-    nuevo_camper=set(id, nombre, apellidos, direccion, acudiente, estado, ruta, trainer)
-    campers_totales.append(nuevo_camper)
-    inscritos_inscritos.append(nuevo_camper)
-    print("Datos agregados con exito")
-    os.system('pause')
 
 def searchStudent():
-    os.system('cls')
-    print("""
-        #################################
-        #         Buscar Camper         #
-        #################################
-          """)
-    buscar_student=input("Ingrese la ID del camper a buscar: ")
-    for student_camper in campers_totales:
-        if buscar_student in student_camper:
-            print("Camper no encontrado")
-            break
-    else:
-        print(f"Camper encontrado: {student_camper}")
-    os.system('pause')
+    
 
 def createTrainer():
-    os.system('cls')
-    print("""
-        #################################
-        #     Formulario Instructor     #
-        #################################
-          """)
     
-    idTrainer = int(input("Ingrese ID del Trainer: "))
-    nombreTrainer = input("Ingrese nombre del Trainer: ")
-    trainer_totales=(idTrainer,nombreTrainer)
-
-    trainers_ingresados.append(trainer_totales)
-    print("Datos agregados con exito")
-    os.system('pause')
-
 def searchTrainer():
-    os.system('cls')
-    print("""
-        #################################
-        #         Buscar Camper         #
-        #################################
-          """)
-    buscarTrainer=input("Ingrese la ID del Trainer a buscar: ")
-    for student in trainers_ingresados:
-        if buscarTrainer in student:
-            print(f"Trainer no encontrado.")
-            break
-    else:
-        print(f"Trainer encontrado: {student}")
-    os.system('pause')
+    
     
 def updateData():
     menu= ["Campers","Trainers","Salir"]
@@ -260,136 +202,24 @@ def addDataCamper():
             os.system('cls')
 
 def nombreApellidoCamper():
-    buscar=input("Ingrese la ID del camper a buscar: ")
-    for i, student in enumerate(campers_totales):
-        if buscar in student:
-            print("Camper no encontrado")
-            break
-    else:
-        nombre= input("Ingrese el nuevo nombre: ")
-        campers_totales[i] = list(campers_totales[i])  # Convertir la tupla a lista
-        campers_totales[i][1] = nombre
-        apellido=input("Ingrese el nuevo apellido: ")
-        campers_totales[i][2] = apellido
-        print("Cambios realizados con exito. ")
-    os.system('pause')
+    
 
 def direccionAcudienteCamper():
-    buscar=input("Ingrese la ID del camper a buscar: ")
-    for i, student in enumerate(campers_totales):
-        if buscar in student:
-            print("Camper no encontrado")
-            break
-    else:
-        direccion= input("Ingrese la nueva direccion: ")
-        campers_totales[i] = list(campers_totales[i])  # Convertir la tupla a lista
-        campers_totales[i][3] = direccion
-        acudiente=input("Ingrese el nuevo acudiente: ")
-        campers_totales[i][4] = acudiente
-        print("Cambios realizados con exito. ")
-    os.system('pause')
+
 
 def deleteDataCamper():
-    buscar=input("Ingrese la ID del camper a buscar: ")
-    for i, student in enumerate(campers_totales):
-        if buscar in student:
-            print("Camper no encontrado")
-            break
-    else:
-        del campers_totales[i]
-        print("Camper eliminado...")
-    os.system('pause')
+  
 
 def addDataTrainer():
-    buscar=input("Ingrese la ID del camper a buscar: ")
-    for i, trainer in enumerate(trainers_ingresados):
-        if buscar in trainer:
-            print("Camper no encontrado")
-            break
-    else:
-        nombre= input("Ingrese el nuevo nombre: ")
-        trainers_ingresados[i] = list(trainers_ingresados[i])  # Convertir la tupla a lista
-        trainers_ingresados[i][1] = nombre
-        apellido=input("Ingrese el nuevo apellido: ")
-        trainers_ingresados[i][2] = apellido
-        print("Cambios realizados con exito. ")
-    os.system('pause')
+
 
 def deleteDataTrainer():
-    buscar=input("Ingrese la ID del camper a buscar: ")
-    for i, trainer in enumerate(trainers_ingresados):
-        if buscar in trainer:
-            print("Camper no encontrado")
-            break
-    else:
-        del trainers_ingresados[i]
-        print("Camper eliminado...")
-    os.system('pause')
 
 def assigmentNotes():
-    while True:
-        buscar_student=int(input("Ingrese la ID del camper a buscar: "))
-        for i, student in enumerate(campers_totales):
-            if buscar_student in student:
-                print(student)
-                nota_teorica= int(input("Ingrese la nota teorica del estudiante: "))
-                nota_practica= int(input("Ingrese la nota practica del estudiante: "))
-                promedio=(nota_teorica + nota_practica)/2
-                if promedio >= 60:
-                    for i, student in enumerate(campers_totales):
-                        if buscar_student in student:
-                            campers_totales[i] = list(campers_totales[i])  # Convertir la tupla a lista
-                            campers_totales[i][5] = studentInscrito
-                            estudiantes_aprobados.append(campers_totales[i])
-                            print(campers_totales[i])
-                            print("El estado del camper ha sido Inscrito. ")
-                            os.system('pause')
-                            break
-                elif promedio<60:
-                            print("No paso la prueba")
-                            break
-            else:
-                print("Camper no Encontrado")
-                os.system('pause')
-                break
-        break
+  
 
 def modulesNotes():
-    while True:
-        buscar_student=int(input("Ingrese la ID del camper a buscar: "))
-        for i, student in enumerate(campers_totales):
-            if buscar_student in student:
-                print(student)
-                notaTeoricaModulo=int(int("Ingrese la nota de la prueba teorica: "))
-                notaPracticaModulo=int(input("Ingrese la nota de la prueba practica: "))
-                notaTalleresModulo=int(input("Ingrese la nota de trabajos: "))
-                promedioModulo=((notaTeoricaModulo*0.3)+(notaPracticaModulo*0.6)+(notaTalleresModulo*0.1))
-                if promedioModulo >= 60:
-                    for i, student in enumerate(campers_totales):
-                            if buscar_student in student:
-                                campers_totales[i] = list(campers_totales[i])  # Convertir la tupla a lista
-                                campers_totales[i][5] = studentAprobado
-                                estudiantes_aprobados.append(campers_totales[i])
-                                print(campers_totales[i])
-                                print("El estado del camper es Aprobado. ")
-                                os.system('pause')
-                                break
-                elif promedioModulo <60:
-                    for i, student in enumerate(campers_totales):
-                            if buscar_student in student:
-                                campers_totales[i] = list(campers_totales[i])  # Convertir la tupla a lista
-                                campers_totales[i][5] = studentRiesgo
-                                estudiantes_aprobados.append(campers_totales[i])
-                                bajo_rendimiento.append(campers_totales[i])
-                                print(campers_totales[i])
-                                print("El estado del camper es bajo rendimiento")
-                                os.system('pause')
-                                break
-            else:
-                print("Camper no Encontrado")
-                os.system('pause')
-                break
-        break
+
 
 def Reportes():
     os.system('cls')
