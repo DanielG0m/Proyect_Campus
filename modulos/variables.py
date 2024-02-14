@@ -112,82 +112,12 @@ class Evaluacion(Evaluacion):
         nota_final = (self.nota_teoria * 0.3) + (self.nota_practica * 0.6) + (self.quices_trabajos * 0.1)
         return nota_final >= 60
     
-#json
 
-def addDataCamperJson(data):
-    with open('modulos/JSON/Campers.json', 'w') as file:
-        json.dump(data, file, indent=4)
-
-def readDataCamperJson():
-    try: # Intenta abrir el archivo JSON en modo de lectura
-        with open('modulos/JSON/Campers.json', 'r') as file: # Carga los datos existentes del archivo JSON
-            data = json.load(file) # Si el archivo no existe o está vacío, crea una lista vacía
-    except (FileNotFoundError, json.decoder.JSONDecodeError):
-        data = []
-    return data
-
-def addDataTrainerJson(data):
-    with open('modulos/JSON/Trainers.json', 'w') as file:
-        json.dump(data, file, indent=4)
-
-def readDataTrainerJson():
-    try:
-        with open('modulos/JSON/Trainers.json', 'r') as file: 
-            data = json.load(file) 
-    except (FileNotFoundError, json.decoder.JSONDecodeError):
-        data = []
-    return data
-
-def addRutas(data):
-    with open('modulos/JSON/Rutas.json', 'w') as file:
-        json.dump(data, file, indent=4)
-
-def loadRutas():
-    try:
-        with open('modulos/JSON/Rutas.json', 'r') as file: 
-            data = json.load(file) 
-    except (FileNotFoundError, json.decoder.JSONDecodeError):
-        data = []
-    return data
-
-def addSalas(data):
-    with open('modulos/JSON/Salas.json', 'w') as file:
-        json.dump(data, file, indent=4)
-
-def loadSalas():
-    try:
-        with open('modulos/JSON/Salas.json', 'r') as file: 
-            data = json.load(file) 
-    except (FileNotFoundError, json.decoder.JSONDecodeError):
-        data = []
-    return data
-
-def addClases(data):
-    with open('modulos/JSON/Clases.json', 'w') as file:
-        json.dump(data, file, indent=4)
-
-def loadClases():
-    try:
-        with open('modulos/JSON/Clases.json', 'r') as file: 
-            data = json.load(file) 
-    except (FileNotFoundError, json.decoder.JSONDecodeError):
-        data = []
-    return data
-
-def addNotas(data):
-    with open('modulos/JSON/Notas.json', 'w') as file:
-        json.dump(data, file, indent=4)
-
-def loadNotas():
-    try:
-        with open('modulos/JSON/Notas.json', 'r') as file: 
-            data = json.load(file) 
-    except (FileNotFoundError, json.decoder.JSONDecodeError):
-        data = []
-    return data
-
-
-
-
-# Clases abstractas
-# Firmas
+campers_totales = []
+inscritos_inscritos = []
+estudiantes_aprobados = []
+entrenadores = []
+bajo_rendimiento = []
+filtrados = []
+no_filtrados = []
+trainers_ingresados = []
