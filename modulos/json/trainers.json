@@ -1,0 +1,31 @@
+[
+    {
+        "Id Trainer": "123456789",
+        "Nombre": "Andres",
+        "Apellido": "Juarez",
+        "Salas elegidas": [
+            {
+                "Sala Elegida": "Sala 1",
+                "Horario": "Manana jornada 1",
+                "Codigo de la sala": 1
+            }
+        ]
+    },
+    {
+        "Id Trainer": "453453345",
+        "Nombre": "Fernando",
+        "Apellido": "Ruiz",
+        "Salas elegidas": [
+            {
+                "Nombre": "Sala 3",
+                "Horario": "Manana jornada 2",
+                "Codigo de la sala": 3
+            },
+            {
+                "Nombre": "Sala 2",
+                "Horario": "Tarde jornada 2",
+                "Codigo de la sala": 2
+            }
+        ]
+    }
+]

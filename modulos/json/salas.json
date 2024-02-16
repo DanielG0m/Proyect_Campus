@@ -1,0 +1,35 @@
+[
+    {
+        "Nombre": "Sala 1",
+        "Capacidad Manana 1": 33,
+        "Capacidad Manana 2": 33,
+        "Capacidad Tarde 1": 33,
+        "Capacidad Tarde 2": 33,
+        "Manana jornada 1": 0,
+        "Manana jornada 2": 1,
+        "Tarde jornada 1": 1,
+        "Tarde jornada 2": 1
+    },
+    {
+        "Nombre": "Sala 2",
+        "Capacidad Manana 1": 33,
+        "Capacidad Manana 2": 33,
+        "Capacidad Tarde 1": 33,
+        "Capacidad Tarde 2": 33,
+        "Manana jornada 1": 0,
+        "Manana jornada 2": 0,
+        "Tarde jornada 1": 0,
+        "Tarde jornada 2": 0
+    },
+    {
+        "Nombre": "Sala 3",
+        "Capacidad Manana 1": 33,
+        "Capacidad Manana 2": 33,
+        "Capacidad Tarde 1": 33,
+        "Capacidad Tarde 2": 33,
+        "Manana jornada 1": 0,
+        "Manana jornada 2": 0,
+        "Tarde jornada 1": 0,
+        "Tarde jornada 2": 0
+    }
+]
