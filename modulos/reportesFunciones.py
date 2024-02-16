@@ -11,6 +11,7 @@ def listarCampersInscritos():
             print(f"{camper['Nombre']} {camper['Apellido']}")
     else:
         print("No hay campers inscritos.")
+        os.system('pause')
 
 def listarCampersAprobados():
     campers = cargarCampers()
@@ -20,8 +21,10 @@ def listarCampersAprobados():
         print("Campers que aprobaron el examen inicial:")
         for camper in aprobados:
             print(f"{camper['Nombre']} {camper['Apellido']}")
+            os.system('pause')
     else:
         print("No hay campers que aprobaron el examen inicial.")
+        os.system('pause')
 
 def listarTrainers():
     trainers = cargarTrainers()
@@ -29,8 +32,10 @@ def listarTrainers():
         print("Lista de todos los entrenadores:")
         for trainer in trainers:
             print(f"{trainer['Nombre']} {trainer['Apellido']}")
+            os.system('pause')
     else:
         print("No hay entrenadores registrados.")
+        os.system('pause')
 
 def listarCampersRendimientoBajo():
     campers = cargarCampers()
@@ -40,8 +45,10 @@ def listarCampersRendimientoBajo():
         print("Campers con bajo rendimiento:")
         for camper in bajo_rendimiento:
             print(f"{camper['Nombre']} {camper['Apellido']}")
+            os.system('pause')
     else:
         print("No hay campers con bajo rendimiento.")
+        os.system('pause')
 
 def listarCampersTrainersRuta():
     campers = cargarCampers()
@@ -54,15 +61,19 @@ def listarCampersTrainersRuta():
         print(f"Campers asociados a la ruta {ruta}:")
         for camper in campers_trainer_ruta:
             print(f"{camper['Nombre']} {camper['Apellido']}")
+            os.system('pause')
     else:
         print(f"No hay campers asociados a la ruta {ruta}.")
+        os.system('pause')
     
     if trainers_ruta:
         print(f"Entrenadores asociados a la ruta {ruta}:")
         for trainer in trainers_ruta:
             print(f"{trainer['Nombre']} {trainer['Apellido']}")
+            os.system('pause')
     else:
         print(f"No hay entrenadores asociados a la ruta {ruta}.")
+        os.system('pause')
 
 def mostrarModulosAprobados():
     campers = cargarCampers()
@@ -74,7 +85,9 @@ def mostrarModulosAprobados():
                 if modulo.startswith("Modulo") and estado == "Aprobado":
                     modulos_aprobados.setdefault(modulo, 0)
                     modulos_aprobados[modulo] += 1
+                    os.system('pause')
     
     print(f"Aprobaciones de módulos para la ruta {ruta}:")
     for modulo, cantidad in modulos_aprobados.items():
         print(f"{modulo}: {cantidad} campers aprobados.")
+        os.system('pause')
