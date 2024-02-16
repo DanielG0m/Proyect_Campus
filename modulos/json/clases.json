@@ -1,0 +1,74 @@
+[
+    {
+        "Nombre": "Alex",
+        "CC": 1085048672,
+        "Ruta": "NodeJs",
+        "Modulos": {
+            "Fundamentos de programacion": [
+                "Introduccion a la algoritmia",
+                "PSeInt",
+                "Python"
+            ],
+            "Programacion Web": [
+                "HTML",
+                "CSS",
+                "Bootstrap"
+            ],
+            "Programacion formal": [
+                "Java",
+                "JavaScript",
+                "C#"
+            ],
+            "Bases de datos": {
+                "Base de datos principal": "MongoDb",
+                "Base de datos Secundario": "Mysql"
+            },
+            "Backend": [
+                "NetCore",
+                "Spring Boot",
+                "NodeJS",
+                "Express"
+            ]
+        },
+        "Trainer": "Andres",
+        "Sala": "Sala1",
+        "FechaInicio": "09/01/2024",
+        "FechaFinalizacion": "09/10/2024"
+    },
+    {
+        "Nombre": "Felipe",
+        "CC": 987654321,
+        "Ruta": "NodeJs",
+        "Modulos": {
+            "Fundamentos de programacion": [
+                "Introduccion a la algoritmia",
+                "PSeInt",
+                "Python"
+            ],
+            "Programacion Web": [
+                "HTML",
+                "CSS",
+                "Bootstrap"
+            ],
+            "Programacion formal": [
+                "Java",
+                "JavaScript",
+                "C#"
+            ],
+            "Bases de datos": {
+                "Base de datos principal": "MongoDb",
+                "Base de datos Secundario": "Mysql"
+            },
+            "Backend": [
+                "NetCore",
+                "Spring Boot",
+                "NodeJS",
+                "Express"
+            ]
+        },
+        "Trainer": "Andres",
+        "Sala": "Sala1",
+        "FechaInicio": "09/01/2024",
+        "FechaFinalizacion": "09/10/2024"
+    }
+]

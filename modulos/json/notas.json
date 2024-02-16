@@ -1,0 +1,35 @@
+[
+    {
+        "Nombre": "Allan",
+        "codigo": 1,
+        "Fundamentos": "Aprobado",
+        "Programacion web": "",
+        "Programacion formal": "",
+        "Base de datos": "",
+        "backend": "",
+        "Estado Actual": "Cursando",
+        "Reportado": 0
+    },
+    {
+        "Nombre": "Daniel",
+        "codigo": 2,
+        "Fundamentos": "",
+        "Programacion web": "",
+        "Programacion formal": "Aprobado",
+        "Base de datos": "Aprobado",
+        "backend": "",
+        "Estado Actual": "Cursando",
+        "Reportado": 0
+    },
+    {
+        "Nombre": "David",
+        "codigo": 3,
+        "Fundamentos": "",
+        "Programacion web": "",
+        "Programacion formal": "Aprobado",
+        "Base de datos": "",
+        "backend": "Aprobado",
+        "Estado Actual": "Cursando",
+        "Reportado": 0
+    }
+]
