@@ -1,0 +1,23 @@
+[
+    {
+        "nombre": "Ruta NodeJS",
+        "area": "Backend",
+        "sgdb_principal": "MongoDB",
+        "sgdb_alternativo": "MySQL",
+        "capacidad_maxima": 33
+    },
+    {
+        "nombre": "Ruta Java",
+        "area": "Programación formal",
+        "sgdb_principal": "PostgreSQL",
+        "sgdb_alternativo": "MongoDB",
+        "capacidad_maxima": 30
+    },
+    {
+        "nombre": "Ruta NetCore",
+        "area": "Backend",
+        "sgdb_principal": "SQL Server",
+        "sgdb_alternativo": "SQLite",
+        "capacidad_maxima": 25
+    }
+]
